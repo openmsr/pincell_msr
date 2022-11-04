@@ -4,4 +4,4 @@
 ## Prerequisites:
 
 ### MSR
-[openmsr/msr](https://github.com/openmsr/openmc/tree/msr) is a OpenMC forked branch where `MSR` capabilities are being deployed. 
+[openmsr/msr](https://github.com/openmsr/openmc/tree/msr_13.2) is a OpenMC forked branch where `MSR` capabilities are being deployed. 
