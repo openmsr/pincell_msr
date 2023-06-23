@@ -3,5 +3,8 @@
 
 ## Prerequisites:
 
-### MSR
-[openmsr/msr](https://github.com/openmsr/openmc/tree/msr_13.2) is a OpenMC forked branch where `MSR` capabilities are being deployed. 
+### TransferRates
+[openmc/develop](https://github.com/openmc-dev/openmc) OpenMC develop branch or available on main branch from version 0.13.4
+
+### Batchwise
+[openmsr/batchwise](https://github.com/openmsr/openmc/tree/batchwise) is a OpenMC forked branch where `batchwise` capabilities are being deployed.
