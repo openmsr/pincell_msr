@@ -7,6 +7,7 @@ uo2 = openmc.Material(name='UO2')
 uo2.set_density('g/cm3', 10.29769)
 uo2.add_element('U', 1., enrichment=2.4)
 uo2.add_element('O', 2.)
+#uo2.temperature = 293
 
 helium = openmc.Material(name='Helium for gap')
 helium.set_density('g/cm3', 0.001598)
@@ -25,6 +26,9 @@ borated_water.add_element('B', 4.0e-5)
 borated_water.add_element('H', 5.0e-2)
 borated_water.add_element('O', 2.4e-2)
 borated_water.add_s_alpha_beta('c_H_in_H2O')
+#borated_water.depletable = True
+#borated_water.volume=22
+#borated_water.temperature=293
 
 # Define overall material
 material = openmc.Materials([uo2, helium, zircaloy, borated_water])
@@ -58,7 +62,7 @@ uo2.volume = pi * fuel_or.r**2 * height
 settings = openmc.Settings()
 settings.batches = 30
 settings.inactive = 10
-settings.particles = 30000
+settings.particles = 20000
 
 # Create an initial uniform spatial source distribution over fissionable zones
 bounds = [-0.62992, -0.62992, -100, 0.62992, 0.62992, 100]
@@ -76,18 +80,23 @@ integrator = openmc.deplete.CECMIntegrator(op, [10.0]*3 , 1e5, timestep_units='d
 
 integrator.add_transfer_rate('UO2', ['Xe'], 0.1)
 
-integrator.add_batchwise('trans', axis = 2, cell_id_or_name = 'MSR',
-                          bracket = [-4, 4],
-                          bracket_limit = [-100,20],
-                          atom_density_limit = 1e-14,
-                          tol = 0.1)
+# integrator.add_batchwise(msr, 'translation', axis = 2,
+#                           density_treatment = 'constant-volume',
+#                           bracket = [-4, 4],
+#                           bracket_limit = [-100,20],
+#                           tol = 0.1)
 
-# integrator.add_batchwise('refuel', mats_id_or_name = ['UO2'],
+# integrator.add_batchwise(msr, 'temperature',
+#                           bracket = [-50, 50],
+#                           bracket_limit = [-1000,1000],
+#                           tol = 0.1)
+
+# integrator.add_batchwise(uo2, 'refuel',
 #                           mat_vector = {'U238': 0.8, 'U235': 0.2},
-#                           bracket = [1e2,1e4], #grams
-#                           bracket_limit = [0.0,1e6], #fraction
-#                           tol = 0.01,
-#                           restart_level = 0)
+#                           density_treatment = 'constant-density',
+#                           bracket = [-100,100], #grams
+#                           bracket_limit = [-1e3,1e3],
+#                           tol = 0.01)
 #
 # integrator.add_batchwise('dilute', mats_id_or_name = ['UO2'],
 #                           mat_vector = {'U238': 0.8, 'U235': 0.2},
