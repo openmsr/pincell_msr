@@ -27,3 +27,21 @@ The added term for a generic buffer nuclide can be expressed mathematically  as:
 ```
 where $`Ox_b`$ is the oxidation state of the buffer nuclide, and $`Ox_i`$, $`Ox_j`$ are the oxidation states of the i-th nuclide undergoing a reaction or a decay and of the j-th product nuclide, respectively.
 Therefore, the first term in the right hand side represents the losses of the i-th nuclide (i.e. the diagonal terms of the Bateman matrix), and the second term the gains of the j-th nuclides (i.e. the off-diagonal terms of the Bateman matrix).
+
+
+## Examples:
+
+### pincell_msr_transfer_rates
+In this example `TransferRates` methodology is demonstrated for a slightly modified version of the existing [openmc pincell depletion example](https://github.com/openmc-dev/openmc-notebooks/blob/main/depletion.ipynb).
+
+### pincell_msr_reactivity_control
+The same pincell model will be used here to show some `ReactiviyControl` functionalities, where we set a geometrical parameter of the pincell to keep it critical during the transport-depletion run.
+
+### pincell_msr_redox
+In this example, we will run the pincell with molten salt (UF4) as fuel and add a redox control to keep the redox potential constant during the transport-depletion run by adding a nuclide buffer.
+
+### pincell_msr_lumped
+Here we show how to set up `TransferRates` to simulate the circulation of fuel salt from in-core to out-of-core regions and vice versa, as a function of the regions' volumes and flow rate.
+
+###pincell_msr_dnf
+The same settings of the *pincell_msr_lumped* cam be used to estimate the Delayed Neutron Fraction (DNF) out-of-core and in-core. 
