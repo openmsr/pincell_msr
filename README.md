@@ -43,5 +43,5 @@ In this example, we will run the pincell with molten salt (UF4) as fuel and add 
 ### pincell_msr_lumped
 Here we show how to set up `TransferRates` to simulate the circulation of fuel salt from in-core to out-of-core regions and vice versa, as a function of the regions' volumes and flow rate.
 
-###pincell_msr_dnf
-The same settings of the *pincell_msr_lumped* cam be used to estimate the Delayed Neutron Fraction (DNF) out-of-core and in-core. 
+### pincell_msr_dnf
+The same settings of the **pincell_msr_lumped** cam be used to estimate the Delayed Neutron Fraction (DNF) out-of-core and in-core. 
